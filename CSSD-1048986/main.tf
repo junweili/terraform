@@ -10,7 +10,7 @@ terraform {
 provider "vra" {
   url           = var.vra_url
   refresh_token = var.vra_refresh_token
-  insecure      = false
+  insecure      = true
 }
 
 resource "vra_project" "projet" {
