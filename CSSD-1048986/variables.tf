@@ -14,7 +14,7 @@ variable shared_resources {
 }
 
 variable operation_timeout {
-    default = null
+    default = 60
 }
 
 variable machine_naming_template {
@@ -34,7 +34,7 @@ variable "project_name" {
 }
 
 variable project_description {
-    default = "fritz@vcac-mail.eng.vmware.com"
+    default = "fix"
 }
 
 variable administrator_roles {
@@ -46,7 +46,7 @@ variable member_roles {
 }
 
 variable viewer_roles {
-    default = ""
+    default = "fritz@vcac-mail.eng.vmware.com"
 }
 
 variable "custom_properties" {
