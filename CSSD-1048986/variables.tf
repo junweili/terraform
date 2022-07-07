@@ -30,19 +30,19 @@ variable extensibility_expression {
 }
 
 variable "project_name" {
-    default = ""
+    default = "vra-junwei"
 }
 
 variable project_description {
-    default = ""
+    default = "fritz@vcac-mail.eng.vmware.com"
 }
 
 variable administrator_roles {
-    default = ""
+    default = "fritz@vcac-mail.eng.vmware.com"
 }
 
 variable member_roles {
-    default = ""
+    default = "fritz@vcac-mail.eng.vmware.com"
 }
 
 variable viewer_roles {
