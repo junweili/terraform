@@ -45,9 +45,6 @@ variable member_roles {
     default = "fritz@vcac-mail.eng.vmware.com"
 }
 
-variable viewer_roles {
-    default = "fritz@vcac-mail.eng.vmware.com"
-}
 
 variable "custom_properties" {
     type = map(string)
