@@ -25,7 +25,7 @@ dynamic "administrator_roles" {
   for_each = var.administrator_roles != null ? [0] : []
   content {
     email = var.administrator_roles
-    type  = "group"
+    type  = "user"
   }
 }
 
@@ -33,7 +33,7 @@ dynamic "member_roles" {
   for_each = var.member_roles != null ? [0] : []
   content {
     email = var.member_roles
-    type  = "group"
+    type  = "user"
   }
 }
 
@@ -41,7 +41,7 @@ dynamic "viewer_roles" {
   for_each = var.viewer_roles != null ? [0] : []
   content {
     email = var.viewer_roles
-    type  = "group"
+    type  = "user"
   }
 }
 
