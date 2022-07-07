@@ -37,13 +37,6 @@ dynamic "member_roles" {
   }
 }
 
-dynamic "viewer_roles" {
-  for_each = var.viewer_roles != null ? [0] : []
-  content {
-    email = var.viewer_roles
-    type  = "user"
-  }
-}
 
   operation_timeout = var.operation_timeout
 
