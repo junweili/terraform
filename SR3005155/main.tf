@@ -25,8 +25,6 @@ resource "aws_s3_bucket" "s3_bucket" {
 resource "aws_s3_bucket" "crr_bucket" {
     count  = var.replication ? 1 : 0
     bucket = "vmware-bucket-aas-${var.bucket_name}-copy"
-    preventDelete = true
-
 }
 
 resource "aws_s3_bucket_acl" "s3_bucket_acl" {
