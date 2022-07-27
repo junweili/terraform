@@ -57,7 +57,7 @@ resource "aws_s3_bucket_versioning" "crr_bucket_versioning" {
 
 resource "aws_s3_bucket_replication_configuration" "replication" {
   count  = var.replication ? 1 : 0
-  depends_on = [aws_s3_bucket_versioning.source]
+  depends_on = [aws_s3_bucket_versioning.s3_bucket_versioning]
 
   role   = "arn:aws:iam::216400275809:role/E2ES3FullAccess"
   bucket = aws_s3_bucket.s3_bucket.id
