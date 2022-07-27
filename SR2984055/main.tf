@@ -9,7 +9,7 @@ variable "aws_region" {
 
 variable "bucket_name" {
     description = "Name of the bucket"
-    default = "default_bucket_name"
+    default = "default-bucket-name"
 }
 
 resource "aws_s3_bucket" "bucket" {
