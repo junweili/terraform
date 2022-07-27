@@ -34,7 +34,7 @@ resource "aws_s3_bucket_acl" "s3_bucket_acl" {
 
 resource "aws_s3_bucket_acl" "crr_bucket_acl" {
   count  = var.replication ? 1 : 0
-  bucket = aws_s3_bucket.crr_bucket.id
+  bucket = aws_s3_bucket.crr_bucket[0].id
   acl    = "private"
 }
 
@@ -48,7 +48,7 @@ resource "aws_s3_bucket_versioning" "s3_bucket_versioning" {
 
 resource "aws_s3_bucket_versioning" "crr_bucket_versioning" {
   count  = var.replication ? 1 : 0
-  bucket = aws_s3_bucket.crr_bucket.id
+  bucket = aws_s3_bucket.crr_bucket[0].id
   versioning_configuration {
     status = "Enabled"
     mfa_delete = "Disabled"
