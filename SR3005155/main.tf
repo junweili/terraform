@@ -18,13 +18,14 @@ variable "replication" {
 }
 
 resource "aws_s3_bucket" "s3_bucket" {
-    bucket = "cigna-bucket-aas-${var.bucket_name}"
+    bucket = "vmware-bucket-aas-${var.bucket_name}"
     preventDelete = true
 
 }
 
 resource "aws_s3_bucket" "crr_bucket" {
-    bucket = "cigna-bucket-aas-${var.bucket_name}-copy"
+    count  = var.replication ? 1 : 0
+    bucket = "vmware-bucket-aas-${var.bucket_name}-copy"
     preventDelete = true
 
 }
@@ -35,6 +36,7 @@ resource "aws_s3_bucket_acl" "s3_bucket_acl" {
 }
 
 resource "aws_s3_bucket_acl" "crr_bucket_acl" {
+  count  = var.replication ? 1 : 0
   bucket = aws_s3_bucket.crr_bucket.id
   acl    = "private"
 }
@@ -48,6 +50,7 @@ resource "aws_s3_bucket_versioning" "s3_bucket_versioning" {
 }
 
 resource "aws_s3_bucket_versioning" "crr_bucket_versioning" {
+  count  = var.replication ? 1 : 0
   bucket = aws_s3_bucket.crr_bucket.id
   versioning_configuration {
     status = "Enabled"
@@ -56,13 +59,14 @@ resource "aws_s3_bucket_versioning" "crr_bucket_versioning" {
 }
 
 resource "aws_s3_bucket_replication_configuration" "replication" {
+  count  = var.replication ? 1 : 0
   depends_on = [aws_s3_bucket_versioning.source]
 
   role   = "arn:aws:iam::216400275809:role/E2ES3FullAccess"
   bucket = aws_s3_bucket.s3_bucket.id
 
   rule {
-    id = "cigna-bucket-aas-${var.bucket_name}-crr"
+    id = "vmware-bucket-aas-${var.bucket_name}-crr"
 
     filter {
       prefix = ""
@@ -73,7 +77,7 @@ resource "aws_s3_bucket_replication_configuration" "replication" {
     status = "Enabled"
 
     destination {
-      bucket = aws_s3_bucket.crr_bucket.arn
+      bucket = aws_s3_bucket.crr_bucket[0].arn
     }
 
     source_selection_criteria {
