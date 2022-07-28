@@ -82,7 +82,7 @@ resource "aws_s3_bucket_replication_configuration" "replication" {
         status = "Enabled"
       }
       sse_kms_encrypted_objects {
-        status = "Enabled"
+        status = "Disabled"
       }
     }
   }
