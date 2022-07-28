@@ -76,6 +76,10 @@ resource "aws_s3_bucket_replication_configuration" "replication" {
     destination {
       bucket = aws_s3_bucket.crr_bucket[0].arn
     }
+      
+    delete_marker_replication {
+      status = "Enabled"
+    }
 
     source_selection_criteria {
       replica_modifications {
