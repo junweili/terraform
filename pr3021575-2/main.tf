@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "myterraformgroup1" {
 # Create virtual network
 data "azurerm_virtual_network" "myterraformnetwork1" {
     name                = "myVnet1"
-    address_space       = ["10.0.0.0/16"]
+    #address_space       = ["10.0.0.0/16"]
     resource_group_name = azurerm_resource_group.myterraformgroup1.name
     provider            = azurerm.azure1
 }
@@ -40,7 +40,7 @@ resource "azurerm_resource_group" "myterraformgroup2" {
 # Create virtual network
 data "azurerm_virtual_network" "myterraformnetwork2" {
     name                = "myVnet2"
-    address_space       = ["10.0.0.0/16"]
+    #address_space       = ["10.0.0.0/16"]
     resource_group_name = azurerm_resource_group.myterraformgroup2.name
     provider            = azurerm.azure2
 }
