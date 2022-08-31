@@ -18,6 +18,7 @@ provider "azurerm" {
 # Create a resource group if it doesn't exist
 resource "azurerm_resource_group" "myterraformgroup1" {
     name     = var.rg_name1
+    location = "eastus"
     provider            = azurerm.azure1
 }
 
@@ -32,6 +33,7 @@ data "azurerm_virtual_network" "myterraformnetwork1" {
 # Create a resource group if it doesn't exist
 resource "azurerm_resource_group" "myterraformgroup2" {
     name     = var.rg_name2
+    location = "westus2"
     provider            = azurerm.azure2
 }
 
