@@ -1,0 +1,34 @@
+inputs:
+  rg_name:
+    type: string
+  vnet_name:
+    type: string
+  rg_hub_name:
+    type: string
+  vnet_hub_name:
+    type: string
+resources:
+  terraform:
+    type: Cloud.Terraform.Configuration
+    metadata:
+      layoutPosition:
+        - 0
+        - 0
+    properties:
+      variables:
+        rg_name: ${input.rg_name}
+        vnet_name: ${input.vnet_name}
+        rg_hub_name: ${input.rg_hub_name}
+        vnet_hub_name: ${input.vnet_hub_name}
+      providers:
+        - name: azurerm.link
+          # List of available cloud zones: ca-azure-sandbox/brazilsouth,ca-azure-sandbox2/brazilsouth,ca-azure-sandbox/eastus2
+          cloudZone: ca-azure-sandbox/brazilsouth
+        - name: azurerm.hub
+          # List of available cloud zones: ca-azure-sandbox/brazilsouth,ca-azure-sandbox2/brazilsouth,ca-azure-sandbox/eastus2
+          cloudZone: ca-azure-sandbox2/brazilsouth
+      terraformVersion: 1.2.6
+      configurationSource:
+        repositoryId: 329d4048-6c6b-416a-9f66-868cade868f9
+        commitId: eb608a36cd2f3e87f1f9c8b6a7695a5dcb135dac
+        sourceDirectory: azure-peeringdev
